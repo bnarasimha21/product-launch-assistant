@@ -88,6 +88,13 @@ product-launch-assistant/
 1. **Backend Setup**:
    ```bash
    cd backend/
+
+   #create virtual environment
+   python -m venv venv
+
+   #use the virtual environment
+   source venv/bin/activate
+
    pip install -r requirements.txt
    
    # Copy and configure environment variables
@@ -112,8 +119,8 @@ product-launch-assistant/
 
 3. **Access the application**:
    - **Frontend**: http://localhost:3000
-   - **API Docs**: http://localhost:8000/api/docs
-   - **Health Check**: http://localhost:8000/api/health
+   - **API Docs**: http://localhost:8000/docs
+   - **Health Check**: http://localhost:8000/health
 
 ## 🚢 **DigitalOcean App Platform Deployment**
 
@@ -123,12 +130,12 @@ product-launch-assistant/
 2. **Connect Repository** and configure 2 services:
 
 **Backend Service:**
-- Name: `api`
+- Name: `backend`
 - Source Directory: `/backend`
 - Environment: `Python`
 - Run Command: `python main.py`
 - Port: `8000`
-- Routes: `/api`
+- Routes: `/backend`
 - Environment Variables:
   ```
   DIGITALOCEAN_INFERENCE_KEY = [your_key] (SECRET)
@@ -145,6 +152,7 @@ product-launch-assistant/
 - Environment Variables:
   ```
   REACT_APP_API_URL = [update_with_backend_url_once_deployed]
+  If you are deploying using "Deploy with DO" button click, this step is not required.
   ```
 
 3. **Deploy** and your app will be live with 2 independent services!
@@ -153,7 +161,7 @@ product-launch-assistant/
 
 ### **Generate Launch Plan**
 
-**Endpoint**: `POST /api/launch_assistant`
+**Endpoint**: `POST /backend/launch_assistant`
 
 **Example Request**:
 ```json
@@ -190,7 +198,5 @@ Configure in `backend/main.py` by updating the `model` parameter.
 
 ## 🔗 **Links**
 
-- **API Documentation**: `/api/docs` (when running)
-- **Health Check**: `/api/health`
 - **DigitalOcean Inference API**: [Documentation](https://docs.digitalocean.com/products/gradientai/)
 - **LangGraph**: [Framework Documentation](https://langchain-ai.github.io/langgraph/) 
