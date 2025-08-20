@@ -14,7 +14,7 @@ spec:
     envs:
     - key: REACT_APP_API_URL
       scope: RUN_AND_BUILD_TIME
-      value: ${APP_URL}/api
+      value: ${APP_URL}/backend
 
   - name: backend
     git:
@@ -24,4 +24,4 @@ spec:
     dockerfile_path: backend/Dockerfile
     http_port: 8000
     routes:
-    - path: /api
+    - path: /backend
